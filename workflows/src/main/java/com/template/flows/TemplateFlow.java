@@ -1,7 +1,7 @@
 package com.template.flows;
 
 import co.paralleluniverse.fibers.Suspendable;
-import com.template.contracts.TemplateContract;
+import com.template.contracts.AppleStampContract;
 import com.template.states.TemplateState;
 import net.corda.core.flows.*;
 import net.corda.core.identity.Party;
@@ -46,7 +46,7 @@ public class TemplateFlow {
 
             // Step 4. Add the iou as an output state, as well as a command to the transaction builder.
             builder.addOutputState(output);
-            builder.addCommand(new TemplateContract.Commands.Send(), Arrays.asList(this.sender.getOwningKey(),this.receiver.getOwningKey()) );
+            builder.addCommand(new AppleStampContract.Commands.Issue(), Arrays.asList(this.sender.getOwningKey(),this.receiver.getOwningKey()) );
 
 
             // Step 5. Verify and sign it with our KeyPair.
